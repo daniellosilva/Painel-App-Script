@@ -1,0 +1,15 @@
+<script>
+  function filtrar() {
+    const dataInicial = document.getElementById("dataInicial").value;
+    const dataFinal = document.getElementById("dataFinal").value;
+
+    if (!dataInicial || !dataFinal) {
+      alert("Por favor, preencha ambas as datas.");
+      return;
+    }
+
+    google.script.run
+      .withSuccessHandler(() => google.script.host.close())
+      .filtrarOportunidadesGanhasPorIntervalo(dataInicial, dataFinal);
+  }
+</script>

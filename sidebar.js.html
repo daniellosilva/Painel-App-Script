@@ -1,0 +1,30 @@
+<script>
+  function atualizarLinhasPreenchidas() {
+    google.script.run.withSuccessHandler(count => {
+      document.getElementById('linhas-preenchidas').textContent = count;
+    }).contarLinhasPreenchidas();
+  }
+
+  document.addEventListener("DOMContentLoaded", atualizarLinhasPreenchidas);
+
+  function procurarOportunidade() {
+    const termo = document.getElementById('input-busca').value;
+    if (!termo) {
+      document.getElementById('resultado-busca').textContent = "Digite um nome para buscar.";
+      return;
+    }
+
+    document.getElementById('resultado-busca').textContent = "Buscando...";
+
+    google.script.run.withSuccessHandler(res => {
+      const msg = `
+        📌 Resultados encontrados: <strong>${res.quantidade}</strong><br>
+        🧭 Fases: ${res.fases.join(", ")}<br>
+        💰 Valor total: R$ ${res.valorTotal}
+      `;
+      document.getElementById('resultado-busca').innerHTML = msg;
+    }).buscarOportunidadesPorNome(termo);
+  }
+</script>
+
+      

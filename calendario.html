@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <h2>📅 Selecione uma data:</h2>
+    <input type="date" id="dataSelecionada" />
+    <button onclick="enviarData()">Aplicar Filtro</button>
+
+    <?!= HtmlService.createHtmlOutputFromFile('calendario.css').getContent(); ?>
+    <?!= HtmlService.createHtmlOutputFromFile('calendario.js').getContent(); ?>
+  </body>
+</html>

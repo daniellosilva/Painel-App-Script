@@ -1,0 +1,29 @@
+<script>
+  function updateProgressBar(percent, message) {
+    const bar = document.getElementById('progress-bar');
+    const msg = document.getElementById('message');
+    const okBtn = document.getElementById('ok-button');
+
+    bar.style.width = percent + '%';
+    bar.textContent = percent + '%';
+    msg.textContent = message;
+
+    okBtn.style.display = percent >= 100 ? 'inline-block' : 'none';
+  }
+
+  function pollProgress() {
+    google.script.run.withSuccessHandler(state => {
+      updateProgressBar(state.percent, state.message);
+      if (state.percent < 100) {
+        setTimeout(pollProgress, 300);
+      }
+    }).getProgressState();
+  }
+
+  function iniciarImportacao() {
+    pollProgress(); 
+    google.script.run.importarSemDuplicatas();
+  }
+
+  window.onload = iniciarImportacao;
+</script>

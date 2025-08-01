@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('intervalo.css').getContent(); ?>
+    <?!= HtmlService.createHtmlOutputFromFile('intervalo.js').getContent(); ?> 
+  </head>
+  <body>
+    <h2>Filtrar Oportunidades Ganhas</h2>
+
+    <div class="campo-data">
+      <label for="dataInicial">Data Inicial:</label>
+      <input type="date" id="dataInicial" />
+    </div>
+
+    <div class="campo-data">
+      <label for="dataFinal">Data Final:</label>
+      <input type="date" id="dataFinal" />
+    </div>
+
+    <button onclick="filtrar()">Aplicar Filtro</button>
+
+    </script>
+  </body>
+</html>

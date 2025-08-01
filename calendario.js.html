@@ -1,0 +1,13 @@
+<script>
+  function enviarData() {
+    const data = document.getElementById('dataSelecionada').value;
+    if (!data) {
+      alert('Por favor, selecione uma data.');
+      return;
+    }
+
+    google.script.run
+      .withSuccessHandler(() => google.script.host.close())
+      .filtrarPorSemanaNaMesmaAba(data); 
+  }
+</script>
